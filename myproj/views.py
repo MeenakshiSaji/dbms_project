@@ -23,6 +23,8 @@ def trainer_success(request,user_id):
     try:
         user=employee.objects.get(id=user_id)
         context={'user':user}
+        members = user.members.all()
+        context = {'user': user, 'members': members}
         return render(request,'esuccess.html',context)
     except employee.DoesNotExist:
        return render(request,'error_page.html')

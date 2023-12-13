@@ -12,7 +12,30 @@
        <p>Trainer ID:{{user.e_id}}</p>
        <p>Phone No:{{user.phno}}</p>
        <p>current package: {{ user.curr_package}}</p>
+       <h3>Members:</h3>
+       <table>
+        <thead>
+            <tr>
+                <th>Member Name</th>
+                <th>Phone No</th>
+                <th>Package Name</th>
+                <th>Member ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for member in members %}
+                <tr>
+                    <td>{{ member.name }}</td>
+                    <td>{{ member.phno }}</td>
+                    <td>{{ member.package_name }}</td>
+                    <td>{{ member.m_id }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
        {% endif %}
+       
        <form method="get" action="{% url 'trainer_login' %}">
         <button type="submit">logout</button>
        </form>
