@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width-device-width , initial-scale=1.0"> 
+       <title>Trainer Login Page</title>
+    </head>
+<body>
+    <h2>Trainer Login Page</h2>
+    <script>
+    function clearmessages() {
+        {% if messages %}
+            {% for message in messages %}
+                alert("{{ message }}");
+            {% endfor %}
+        {% endif %}
+    }
+    window.onload = clearmessages;
+    </script>
+
+    <form method="post" action="{% url 'trainer_login' %}">
+        {% csrf_token %}
+        <label for="e_id">Trainer ID:</label>
+        <input type="text" name="e_id" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" required><br>
+
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>
